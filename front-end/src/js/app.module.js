@@ -3,5 +3,6 @@
 angular
   .module('realestateApp', [
     'ngRoute',
-    'realestateApp.home'
+    'realestateApp.home',
+    'realestateApp.payment'
   ]);
