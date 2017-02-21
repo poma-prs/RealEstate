@@ -50,7 +50,8 @@ var config = {
   server: {
     baseDir: "./build",
     routes: {
-      '/bower_components': 'bower_components'
+      '/bower_components': 'bower_components',
+      '/libs': 'libs'
     }
   },
   tunnel: true,
