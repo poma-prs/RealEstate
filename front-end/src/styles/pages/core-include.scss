@@ -1,0 +1,23 @@
+
+
+//  text
+$primary-text-color: #3e3e3e;
+$primary-text-color-hover: #8b8b8b;
+
+
+//  button
+
+@mixin primary-button() {
+  color: white;
+  background-color: #e4002b;
+  border: 0;
+  border-radius: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-width: 80px;
+
+  &:hover {
+    color: white;
+    background-color: #b60022;
+  }
+}

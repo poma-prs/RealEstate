@@ -2,4 +2,11 @@
 @import "../../bower_components/bootstrap/dist/css/bootstrap.css";
 @import "../../bower_components/angular-material-icons/angular-material-icons.css";
 
-@import "pages/payment"
+@import "pages/core-include";
+
+// directives
+@import "directives/navbar.directive";
+
+// pages
+@import "pages/core";
+@import "pages/payment";

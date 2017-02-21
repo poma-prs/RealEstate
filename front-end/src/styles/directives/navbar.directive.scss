@@ -1,0 +1,30 @@
+.nav-bar-directive {
+  .navbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+    border-bottom: #d2d2d2 solid 1px;
+
+    .btn {
+      @include primary-button();
+
+      margin-top: 5px;
+      margin-bottom: 5px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    li>a:not(.btn) {
+      color: $primary-text-color;
+
+      &:hover {
+        color: $primary-text-color-hover;
+      }
+    }
+
+    .navbar-brand {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+}
