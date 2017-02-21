@@ -1,3 +1,164 @@
 <div class="payment-page">
   <nav-bar></nav-bar>
+
+  <div class="block pricing-guide-block" ng-init="mode = 1">
+    <div class="container">
+
+      <div ng-if="mode < 5">
+        <div class="title" ng-bind-html="getTitle(mode)"></div>
+        <div class="stage-progress">
+          <div class="progress-point" ng-class="{ 'active-progress' : mode >= 1 }"></div>
+          <div class="progress-line" ng-class="{ 'active-progress' : mode >= 2 }"></div>
+          <div class="progress-point" ng-class="{ 'active-progress' : mode >= 2 }"></div>
+          <div class="progress-line" ng-class="{ 'active-progress' : mode >= 3 }"></div>
+          <div class="progress-point" ng-class="{ 'active-progress' : mode >= 3 }"></div>
+          <div class="progress-line" ng-class="{ 'active-progress' : mode >= 4 }"></div>
+          <div class="progress-point" ng-class="{ 'active-progress' : mode >= 4 }"></div>
+          <div class="progress-line" ng-class="{ 'active-progress' : mode >= 5 }"></div>
+          <div class="progress-point" ng-class="{ 'active-progress' : mode >= 5 }"></div>
+        </div>
+        <div class="subtitle" ng-bind-html="getSubtitle(mode)"></div>
+      </div>
+
+      <div class="stage-1" ng-if="mode == 1">
+        <div class="group-input">
+          <div class="input-name">Enter Your Agency ID</div>
+          <input type="text" name="suburb" class="main-text-input" ng-model="formModel.agencyId">
+        </div>
+
+        <div class="btn main-btn" ng-click="$parent.mode = $parent.mode + 1">Show Prices</div>
+      </div>
+
+      <div class="stage-2" ng-if="mode == 2">
+        <div class="group-input">
+          <div class="input-name">Enter Suburb Name</div>
+          <input type="text" name="suburb" class="main-text-input" ng-model="formModel.suburbName">
+        </div>
+
+        <div class="btn main-btn" ng-click="$parent.mode = $parent.mode + 1">Purchase Leads</div>
+      </div>
+
+      <div class="stage-3" ng-if="mode == 3">
+        <div class="group-input">
+          <div class="input-name">Purchase Leads</div>
+          <div class="group-inputs" ng-init="diff = 500">
+            <div class="btn" ng-click="formModel.purchaseLeads = formModel.purchaseLeads - diff">
+              <i class="fa fa-minus" aria-hidden="true"></i>
+            </div>
+            <input type="text" class="main-text-input" ng-model="formModel.purchaseLeads" disabled="">
+            <div class="btn" ng-click="formModel.purchaseLeads = formModel.purchaseLeads + diff">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="order-params">
+            <div class="order-param">
+              <div class="param-title">Listing Upgrade</div>
+              <div class="param-value">45 Days</div>
+            </div>
+            <div class="order-param">
+              <div class="param-title"><span>{{formModel.purchaseLeads}} Leads</span></div>
+              <div class="param-value">
+                <span class="initial-price">${{formModel.purchaseLeads / 1000 * 210}}</span><br>
+                <span class="actual-price">${{formModel.purchaseLeads / 1000 * 210 * 0.55}}</span>
+              </div>
+            </div>
+            <div class="order-param">
+              <div class="param-title">Prices Include GST</div>
+              <div class="param-value">Per 45 Days</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn main-btn" ng-click="$parent.mode = $parent.mode + 1">Purchase Leads</div>
+      </div>
+
+      <div class="stage-4" ng-if="mode == 4">
+        <div class="content-container">
+          <div class="pay-methods">
+            <div class="pay-method">
+              <input id="pay-method-radio-1" class="radio-input" type="radio" name="pay-method" value="credit" checked="checked">
+              <label for="pay-method-radio-1">Pay with credit card</label>
+              <img src="/assets/images/payment/cards.png">
+            </div>
+          </div>
+
+          <div class="card-list">
+            <div class="card-list-title">Pay with your Card via Stripe</div>
+            <div class="card-item">
+              <input id="card-radio-1" type="radio" class="radio-input" name="cards">
+              <label for="card-radio-1">Ending in (expires 00/0)</label>
+            </div>
+            <div class="card-item">
+              <input id="card-radio-2" type="radio" class="radio-input" name="cards" checked="checked">
+              <label for="card-radio-2">Use a new payment method</label>
+            </div>
+          </div>
+
+          <div class="group-input card-number">
+            <div class="input-name">Card Number: <span class="required-text">*</span></div>
+            <div class="input-container">
+              <input type="text" name="card-number" class="main-text-input" placeholder="&#xf111&#xf111&#xf111&#xf111 &#xf111&#xf111&#xf111&#xf111 &#xf111&#xf111&#xf111&#xf111 &#xf111&#xf111&#xf111&#xf111">
+            </div>
+          </div>
+
+          <div class="card-input-group">
+            <div class="group-input card-expiry">
+              <div class="input-name">Expiry (MM/YY): <span class="required-text">*</span></div>
+              <input type="text" name="card-expiry" class="main-text-input" placeholder="MM/YY">
+            </div>
+
+            <div class="group-input card-code">
+              <div class="input-name">Card Code: <span class="required-text">*</span></div>
+              <div class="input-container">
+                <input type="text" name="card-code" class="main-text-input" placeholder="CVC">
+              </div>
+            </div>
+          </div>
+
+          <div class="save-card-container">
+            <input id="save-card-checkbox" type="checkbox" class="checkbox-input" name="save-card" checked="checked">
+            <label for="save-card-checkbox">Save to Account</label>
+          </div>
+
+          <div class="save-to-account-container">
+            <input id="save-to-account-checkbox" type="checkbox" class="checkbox-input" name="save-to-account">
+            <label for="save-to-account-checkbox">
+              I've read and accept
+              <a href="#">Terms and Conditions</a>
+              <i class="required-text">*</i>
+            </label>
+          </div>
+
+          <div class="text-center">
+            <div class="btn main-btn" ng-click="$parent.mode = $parent.mode + 1">Place Order</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="stage-5" ng-if="mode == 5">
+        <img src="/assets/images/payment/success.png">
+        <div class="title">
+          Thank you!<br>
+          Your order was placed successfully!
+        </div>
+        <div class="title-underline"></div>
+        <div class="subtitle">What would you like to do next?</div>
+
+        <div>
+          <div class="btn default-btn">My Cabinet</div>
+          <div class="btn main-btn">New Order</div>
+        </div>
+
+      </div>
+
+      <div>
+        <span class="back-link" ng-click="$parent.mode = $parent.mode - 1" ng-if="mode > 1 && mode < 5">Back</span>
+      </div>
+
+    </div>
+  </div>
 </div>

@@ -1,15 +1,13 @@
 
 
-//  text
-$primary-text-color: #3e3e3e;
-$primary-text-color-hover: #8b8b8b;
-
-
-//  button
+$primary-color: #e4002b;
+$general-text-color: #3e3e3e;
+$general-text-color-hover: #8b8b8b;
+$primary-text-color: #e4002b;
 
 @mixin primary-button() {
   color: white;
-  background-color: #e4002b;
+  background-color: $primary-color;
   border: 0;
   border-radius: 2px;
   padding-left: 20px;
@@ -20,4 +18,36 @@ $primary-text-color-hover: #8b8b8b;
     color: white;
     background-color: #b60022;
   }
+
+  &:focus {
+    color: white;
+    background-color: #b60022;
+  }
+}
+
+@mixin default-button() {
+  color: white;
+  background-color: #d1d1d1;
+  border: 0;
+  border-radius: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-width: 80px;
+
+  &:hover {
+    color: white;
+    background-color: #a7a7a7;
+  }
+
+  &:focus {
+    color: white;
+    background-color: #a7a7a7;
+  }
+}
+
+@mixin primary-text-input() {
+  background-color: #f7f8f9;
+  border: 1px solid #cdcdcd;
+  border-radius: 2px;
+  padding: 10px;
 }

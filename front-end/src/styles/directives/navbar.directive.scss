@@ -4,8 +4,9 @@
     padding-bottom: 10px;
     background-color: white;
     border-bottom: #d2d2d2 solid 1px;
+    margin-bottom: 0;
 
-    .btn {
+    .main-btn {
       @include primary-button();
 
       margin-top: 5px;
@@ -14,17 +15,28 @@
       padding-bottom: 10px;
     }
 
-    li>a:not(.btn) {
-      color: $primary-text-color;
+    li>a {
+      color: $general-text-color;
 
       &:hover {
-        color: $primary-text-color-hover;
+        color: $general-text-color-hover;
       }
     }
 
     .navbar-brand {
       padding-top: 10px;
       padding-bottom: 10px;
+    }
+
+    @media (max-width: 767px) {
+      .navbar-collapse {
+        text-align: center;
+
+        .main-btn {
+          margin-left: 15px;
+          margin-right: 15px;
+        }
+      }
     }
   }
 }
